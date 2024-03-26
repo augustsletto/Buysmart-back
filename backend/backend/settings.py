@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-vomuc#+@8w(r^)#0hyxxap4a6qz5v6)mnws!and*x&b6f((b$f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-augustslett-buysmartbac-tbr0y1f6qx7.ws-eu110.gitpod.io']
+ALLOWED_HOSTS = [
+    '*.herokuapp.com',
+    '*.gitpod.io',
+]
 
 
 # Application definition
@@ -45,8 +48,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
