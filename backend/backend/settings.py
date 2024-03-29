@@ -41,18 +41,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io']
 
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
 
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
-        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
-    ).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -220,4 +210,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 

@@ -5,5 +5,6 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
+    path('add/', views.addOrderItems, name='orders-add'),
    
 ]
