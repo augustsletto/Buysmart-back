@@ -83,7 +83,7 @@ def getUsers(request):
 @permission_classes([IsAdminUser])
 def getUserById(request, pk):
     user = User.objects.get(id=pk)
-    serializer = UserSerializer(users, many=False)
+    serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
 
@@ -91,7 +91,6 @@ def getUserById(request, pk):
 @permission_classes([IsAuthenticated])
 def updateUser(request, pk):
     user = User.objects.get(id=pk)
-    
 
     data = request.data
 
@@ -101,7 +100,7 @@ def updateUser(request, pk):
     user.is_staff = data['isAdmin']
 
     user.save()
-    
+
     serializer = UserSerializer(user, many=False)
 
     return Response(serializer.data)
