@@ -49,7 +49,8 @@ ALLOWED_HOSTS = ['8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io']
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io'
+    'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io',
+    'https://buysmart-react-a67a60d44e70.herokuapp.com'
 ]
 # Application definition
 
