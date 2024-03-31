@@ -54,7 +54,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io',
-    'https://buysmart-react-a67a60d44e70.herokuapp.com'
+    'https://buysmart-react-a67a60d44e70.herokuapp.com',
+    'https://3000-augustslett-buysmartfro-iuj11bcrysa.ws-eu110.gitpod.io/',
+    
 ]
 # Application definition
 
