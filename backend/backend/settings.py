@@ -39,7 +39,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io']
+ALLOWED_HOSTS = ['8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io',
+'https://buysmart-react-a67a60d44e70.herokuapp.com']
 
 
 
