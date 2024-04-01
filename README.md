@@ -1,39 +1,42 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# [Live Backend Heroku Project](https://buysmart-react-a67a60d44e70.herokuapp.com/)
 
-Welcome,
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+- [Live Backend](https://buysmart-frontend-7289ed9987fe.herokuapp.com/)
+- [Backend GitHub Repository](https://github.com/augustsletto/Buysmart-back)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
 
-## Codeanywhere Reminders
+![MMA Quiz Screenshot1](https://res.cloudinary.com/dt4sw7qtl/image/upload/v1711928626/SneakReadMeImages/cc6fro1meohanbho2z32.jpg)
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
 
-`python3 -m http.server`
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+## Testing API URLs with Associated Views
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
-
-`http_server`
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
+| #   | URL                             | View                                 | Expected Outcome                              |
+| --- | ------------------------------- | ------------------------------------ | --------------------------------------------- |
+| 1   | `/`                             | `root_route`                         | :white_check_mark:                            |
+| 2   | `/admin/`                       | `admin.site.urls`                    | :white_check_mark:                            |
+| 3   | `/api/products/`                | `base.urls.product_urls`             | :white_check_mark:                            |
+| 4   | `/api/users/`                   | `base.urls.user_urls`                | :white_check_mark:                            |
+| 5   | `/api/orders/`                  | `base.urls.order_urls`               | :white_check_mark:                            |
+| 6   | `/api/orders/`                  | `views.getOrders`                    | :white_check_mark:                            |
+| 7   | `/api/orders/add/`              | `views.addOrderItems`                | :white_check_mark:                            |
+| 8   | `/api/orders/myorders/`         | `views.getMyOrders`                  | :white_check_mark:                            |
+| 9   | `/api/orders/<str:pk>/deliver/` | `views.updateOrderToDelivered`       | :white_check_mark:                            |
+| 10  | `/api/orders/<str:pk>/`         | `views.getOrderById`                 | :white_check_mark:                            |
+| 11  | `/api/orders/<str:pk>/pay/`     | `views.updateOrderToPaid`            | :white_check_mark:                            |
+| 12  | `/api/products/`                | `views.getProducts`                  | :white_check_mark:                            |
+| 13  | `/api/products/create/`         | `views.createProduct`                | :white_check_mark:                            |
+| 14  | `/api/products/upload/`         | `views.uploadImage`                  | :white_check_mark:                            |
+| 15  | `/api/products/<str:pk>/reviews/` | `views.createProductReview`        | :white_check_mark:                            |
+| 16  | `/api/products/top/`            | `views.getTopProducts`               | :white_check_mark:                            |
+| 17  | `/api/products/<str:pk>/`       | `views.getProduct`                   | :white_check_mark:                            |
+| 18  | `/api/products/update/<str:pk>/` | `views.updateProduct`               | :white_check_mark:                            |
+| 19  | `/api/products/delete/<str:pk>/` | `views.deleteProduct`               | :white_check_mark:                            |
+| 20  | `/api/login/`                   | `views.MyTokenObtainPairView` | :white_check_mark:                        |
+| 21  | `/api/register/`                | `views.registerUser`                 | :white_check_mark:                            |
+| 22  | `/api/profile/`                 | `views.getUserProfile`               | :white_check_mark:                            |
+| 23  | `/api/profile/update/`          | `views.updateUserProfile`            | :white_check_mark:                            |
+| 24  | `/api/users/`                   | `views.getUsers`                     | :white_check_mark:                            |
+| 25  | `/api/users/<str:pk>/`          | `views.getUserById`                  | :white_check_mark:                            |
+| 26  | `/api/users/update/<str:pk>/`   | `views.updateUser`                   | :white_check_mark:                            |
+| 27  | `/api/users/delete/<str:pk>/`   | `views.deleteUser`                   | :white_check_mark:                            |
