@@ -129,3 +129,89 @@
 5. Run migrations using `python manage.py migrate`.
 6. Start the development server using `python manage.py runserver`.
 7. For production deployment, consider configuring a production-ready web server like Nginx or Apache along with a WSGI server like Gunicorn. Additionally, set `DEBUG=False` in your production settings and ensure proper security configurations.
+
+
+
+# Deploy to Heroku with ElephantSQL and Connect to React App
+
+To deploy your Django backend to Heroku with ElephantSQL and connect it to your React frontend, follow these steps:
+
+1. **Create a Heroku App:**
+   - Log in to your Heroku account or sign up for a new one.
+   - Navigate to your dashboard and click on the "New" button, then select "Create new app."
+   - Choose a unique app name and select your region.
+
+2. **Set up ElephantSQL Database:**
+   - Sign up for an account on ElephantSQL (https://www.elephantsql.com/).
+   - Create a new instance with the plan that suits your needs.
+   - Copy the PostgreSQL database URL provided by ElephantSQL.
+
+3. **Configure Django Settings:**
+   - Install `dj_database_url` using `pip install dj_database_url psycopg2`.
+   - In your Django settings, import `dj_database_url`.
+   - Configure the database settings to use the PostgreSQL database URL provided by ElephantSQL. For example:
+     ```python
+     import dj_database_url
+
+     if 'DEV' in os.environ:
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': BASE_DIR / 'db.sqlite3',
+         }
+     }
+     else:
+       DATABASES = {
+           'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+     }
+     ```
+
+     Make sure you have you env.py file with the following content.
+     ```
+     import os
+     os.environ['CLOUDINARY_URL'] = "cloudinary://..."
+     os.environ['SECRET_KEY'] = "Z7o..."
+     os.environ['DEV'] = '1'
+     os.environ['DATABASE_URL'] = "postgres://..."
+
+      ```
+
+4. **Update Allowed Hosts:**
+   - Add your Heroku app URL to the `ALLOWED_HOSTS` list in your Django settings.
+
+5. **Create Procfile:**
+   - Create a file named `Procfile` in your project root directory.
+   - Add the following line to the `Procfile` to tell Heroku how to run your web server:
+     ```
+     web: gunicorn your_project_name.wsgi --log-file -
+     ```
+
+6. **Set Up Environment Variables:**
+   - Add environment variables for `SECRET_KEY`, `DATABASE_URL`, and other sensitive information using Heroku CLI or the Heroku dashboard. Make sure to set the `DATABASE_URL` variable to the ElephantSQL database URL.
+
+7. **Deploy Your App:**
+   - Initialize a Git repository if you haven't already (`git init`).
+   - Add and commit your changes (`git add .` and `git commit -m "Initial commit"`).
+   - Add Heroku as a remote repository (`heroku git:remote -a your_heroku_app_name`).
+   - Push your code to Heroku (`git push heroku master`).
+
+8. **Run Migrations and Collect Static Files:**
+   - Run migrations on the Heroku server using `heroku run python manage.py migrate`.
+   - Collect static files using `heroku run python manage.py collectstatic`.
+
+9. **Connect to React Frontend:**
+   - In your React app, update API URLs to point to your Heroku backend.
+   - For example, if your Django backend is deployed at `https://your-heroku-app.herokuapp.com/`, update API URLs accordingly.
+
+10. **Test Your Deployment:**
+    - Visit your Heroku app URL in a web browser to ensure that your Django backend is running correctly.
+    - Test API endpoints to verify that data is being served as expected.
+
+11. **Monitor and Troubleshoot:**
+    - Monitor your Heroku app's logs using `heroku logs --tail` to debug any issues.
+    - Check the Heroku dashboard for any errors or warnings.
+
+12. **Finalize Configuration:**
+    - Once everything is working as expected, you can continue to customize your Heroku app settings, such as adding a custom domain or enabling HTTPS.
+
+Congratulations! Your Django backend is now deployed to Heroku with ElephantSQL and connected to your React frontend.
